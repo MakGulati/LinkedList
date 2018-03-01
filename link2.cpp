@@ -15,9 +15,10 @@ public:
     LinkedList();
     void add(int val);
     void insert_position(int pos, int value);
-    void print() const;
+    void print();
     void delete_position(int pos);
     void search_value(int value);
+    void sort();
     
 };
 
@@ -76,7 +77,7 @@ void LinkedList::search_value(int value)
 {
     Node * cur=head;
     int i=0;
-    while (cur != NULL)
+    while (cur != nullptr)
     {   
         if(cur->data==value)
         {
@@ -91,9 +92,26 @@ void LinkedList::search_value(int value)
 
 
 }
+void LinkedList::sort()
+{
+    Node *cur = head;
+    Node *curNext = cur->next;
+    Node *temp=new Node;
+    while((cur->next->next)!= nullptr)
+    {
+        if(cur->data > curNext->data)
+        {
+            temp->data = cur->data;
+            cur->data = curNext->data;
+            curNext->data = temp->data;
+        }
+        cur = cur->next;
+    }
+    cout<<"Sorted"<<endl;
+}
 
 
-void LinkedList::print() const
+void LinkedList::print() 
 {
     Node * cur;
 
@@ -121,18 +139,20 @@ void LinkedList::delete_position(int pos)
 int main()
 {
     LinkedList aList;
-
-     aList.add(0);
-     aList.add(1);
      aList.add(2);
      aList.add(3);
      aList.add(4);
-     aList.insert_position(5,5);
-     aList.insert_position(0,5);
-     aList.delete_position(0);
-      aList.search_value(5);
+     aList.add(0);
+     aList.add(1);
+     
+     //aList.insert_position(5,5);
+     //aList.insert_position(0,5);
+     //aList.delete_position(0);
+    //aList.search_value(5);
 
 
+    aList.print();
+    aList.sort();
     aList.print();
    
     
