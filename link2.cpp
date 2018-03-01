@@ -17,6 +17,7 @@ public:
     void insert_position(int pos, int value);
     void print() const;
     void delete_position(int pos);
+    void search_value(int value);
     
 };
 
@@ -71,6 +72,25 @@ void LinkedList::insert_position(int pos, int value)
 
     
 }
+void LinkedList::search_value(int value)
+{
+    Node * cur=head;
+    int i=0;
+    while (cur != NULL)
+    {   
+        if(cur->data==value)
+        {
+            cout<<"Found at:"<<i<<endl;
+            break;
+        }
+        i++;
+        cur = cur->next;   
+       
+    }
+    
+
+
+}
 
 
 void LinkedList::print() const
@@ -79,7 +99,7 @@ void LinkedList::print() const
 
     cur = head;
 
-    while (cur != nullptr)
+    while (cur->next != nullptr)
     {
         cout << cur->data << endl;
         cur = cur->next;
@@ -110,8 +130,11 @@ int main()
      aList.insert_position(5,5);
      aList.insert_position(0,5);
      aList.delete_position(0);
+      aList.search_value(5);
+
 
     aList.print();
+   
     
     return 0;
 }
